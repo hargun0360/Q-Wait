@@ -3,13 +3,17 @@ import './Signup.css'
 import Navbar from '../../layout/Navbar/Navbar'
 import { useForm } from 'react-hook-form'
 import image from '../../Assets/pic.svg'
+import {useSelector,useDispatch} from 'react-redux'
+import * as actionCreators from '../../../redux/actions/AuthAction'
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    const dispatch = useDispatch();
     const onSubmit = (data, e) => {
         e.preventDefault();
-
+        dispatch(actionCreators.userEmail(data.email));
+        console.log(data.email);
     }
     const [toggle, setToggle] = useState(false);
     const [toggle1, setToggle1] = useState(false);
