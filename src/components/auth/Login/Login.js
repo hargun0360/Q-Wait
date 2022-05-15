@@ -2,14 +2,21 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../../layout/Navbar/Navbar'
 import { useForm } from 'react-hook-form'
 import image from '../../Assets/pic.svg'
+import {useNavigate} from 'react-router-dom'
 import './Login.css'
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    const navigate = useNavigate();
     const onSubmit = (data, e) => {
         e.preventDefault();
-
+    }
+    const handleClick = () =>{
+        navigate("/forgot");
+    }
+    const handleClicked = () =>{
+        navigate("/signup");
     }
     const [toggle, setToggle] = useState(false);
     return (
@@ -66,9 +73,9 @@ const Login = () => {
                             <p className='alerts'>{errors.password?.message}</p>
                         </div>
                     </div>
-                    <p className='forgot'><u>Forgot password ?</u></p>
+                    <p className='forgot' onClick={handleClick}><u>Forgot password ?</u></p>
                     <button className='signup-btn' type='submit'>Login</button>
-                    <p className='signup-head'>Create New Account <span>Signup</span></p>
+                    <p className='signup-head'>Create New Account <span onClick={handleClicked}>Signup</span></p>
                 </form>
             </div>
             <div className='queue-img'>

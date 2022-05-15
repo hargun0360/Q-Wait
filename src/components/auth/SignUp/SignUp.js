@@ -5,18 +5,25 @@ import { useForm } from 'react-hook-form'
 import image from '../../Assets/pic.svg'
 import {useSelector,useDispatch} from 'react-redux'
 import * as actionCreators from '../../../redux/actions/AuthAction'
+import {useNavigate} from 'react-router-dom'
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const onSubmit = (data, e) => {
         e.preventDefault();
         dispatch(actionCreators.userEmail(data.email));
-        console.log(data.email);
+        dispatch(actionCreators.userPass(data.password));
+        localStorage.setItem("email",data.email);
+        navigate("/otp");
     }
     const [toggle, setToggle] = useState(false);
     const [toggle1, setToggle1] = useState(false);
+    const handleClicked = ()=>{
+        navigate("/login");
+    }
 return (
     <div className='Signup-Page'>
         <div className='Navbar-Signup'>
@@ -55,7 +62,7 @@ return (
                     </div>
                 </div>
                 <button className='signup-btn' type='submit'>Sign Up Now</button>
-                <p className='login-head'>Existing users <u>Login</u></p>
+                <p className='login-head'>Existing users <u onClick={handleClicked}>Login</u></p>
 
             </form>
         </div>

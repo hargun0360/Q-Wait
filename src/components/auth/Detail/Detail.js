@@ -5,15 +5,22 @@ import { useForm } from 'react-hook-form'
 import photo1 from '../../Assets/customer.svg'
 import photo2 from '../../Assets/store.svg'
 import photo3 from '../../Assets/user.svg'
+import {useSelector,useDispatch} from 'react-redux'
+import * as actionCreators from '../../../redux/actions/AuthAction'
 const Details = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    const dispatch = useDispatch();
+    const [role, setRole] = useState(null);
     const onSubmit = (data, e) => {
         e.preventDefault();
-
+        dispatch(actionCreators.userName(data.fullname));
+        dispatch(actionCreators.userMobile(data.mobile));
+        dispatch(actionCreators.userGender(data.aopt));
+        dispatch(actionCreators.userType(data.role));
+        localStorage.setItem("Type",role);
     }
-    const [role, setRole] = useState(null);
     const [fieldValue, setFieldValue] = useState(null);
     const [preview, setPreview] = useState(photo3);
     const imageHandler = (e) => {

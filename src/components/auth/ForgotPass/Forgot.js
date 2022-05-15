@@ -3,10 +3,12 @@ import Navbar from '../../layout/Navbar/Navbar'
 import { useForm } from 'react-hook-form'
 import image from '../../Assets/pic.svg'
 import './Forgot.css'
+import {useNavigate} from 'react-router-dom'
 const Forgot = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+    const navigate = useNavigate();
     const onSubmit = (data, e) => {
         e.preventDefault();
         localStorage.setItem("forgot",1);
