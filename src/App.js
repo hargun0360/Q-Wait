@@ -1,8 +1,10 @@
-
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import Signup from './components/auth/SignUp/SignUp';
 function App() {
-  return (
-    <>
-      Hello KIET
+  return ( <>
+       <Routes>
+        <Route exact path="/signup" element={<Signup />} />
+      </Routes>
     </>
   );
 }
