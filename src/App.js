@@ -1,12 +1,16 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
-import Home from './components/layout/Home';
+import HomePage from './components/layout/Homepage/HomePage';
+import QrScanner from './components/layout/QrScanner/QrScanner';
+import StorePage from './components/layout/StorePage/StorePage';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Home/>}/>
+        <Route exact path="/" element={<HomePage/>}/>
+        <Route exact path="/store" element={<StorePage/>}/>
+        <Route exact path="/qr" element={<QrScanner/>}/>
       </Routes>
     </>
   );
