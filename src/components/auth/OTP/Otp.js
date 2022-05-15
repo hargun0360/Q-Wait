@@ -10,7 +10,6 @@ const Otp = () => {
     const [seconds, setSeconds] = useState(0);
     const handleChange = (otp) => setState(otp);
     const x = localStorage.getItem("forgot");
-    console.log(x);
     const style = {
         width: "28vw",
         height: "12vh",
@@ -44,6 +43,7 @@ const Otp = () => {
     const handleSubmit = (e) =>{
         e.preventDefault();
         localStorage.removeItem("forgot");
+        console.log(state);
 }
   return (<>
         <div className='Signup-Page'>
